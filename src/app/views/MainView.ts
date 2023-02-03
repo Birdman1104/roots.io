@@ -18,7 +18,7 @@ export class MainView extends Phaser.GameObjects.Container {
         //
     }
 
-    public build(): void {
+    private build(): void {
         this.add((this.gameView = new GameView(this.scene)));
         this.add((this.uiView = new UIView(this.scene)));
         this.add((this.resultView = new ResultView(this.scene)));

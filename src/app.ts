@@ -30,6 +30,13 @@ const config = {
             },
         ],
     },
+    physics: {
+        default: "arcade",
+        arcade: {
+            debug: true,
+            debugShowBody: true,
+        },
+    },
     antialias: true,
     scene: [PreloadScene, BootScene, MainScene],
 };
