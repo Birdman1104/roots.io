@@ -49,3 +49,12 @@ type ButtonHitAreaConfig = {
     area: any;
     callback: any;
 };
+
+type BotDataConfig = {
+    id: string;
+    size: number;
+    color: number;
+    score: number;
+    speed: number;
+    name: string;
+};

@@ -6,8 +6,6 @@ const getUUID = (() => {
 })();
 
 export class ObservableModel {
-    protected emitEventsFor: string[];
-
     // eslint-disable-next-line @typescript-eslint/naming-convention
     protected __name__: string;
     private _uuid: string;

@@ -5,10 +5,9 @@ export class Seed extends Phaser.GameObjects.Container {
     public isEaten = false;
     private seedImg: Phaser.GameObjects.Sprite;
 
-    public constructor(public scene) {
+    public constructor(public scene, public id) {
         super(scene);
         this.seedType = seeds[Math.floor(Math.random() * 3)];
-        console.warn(this.seedType);
 
         this.init();
     }

@@ -1,3 +1,5 @@
+import { lego } from "@armathai/lego";
+import { MainViewEvents } from "../../events/GameEvents";
 import { ForegroundView } from "./ForegroundView";
 import { GameView } from "./GameView";
 import { ResultView } from "./ResultView";
@@ -27,5 +29,7 @@ export class MainView extends Phaser.GameObjects.Container {
         this.add((this.uiView = new UIView(this.scene)));
         this.add((this.resultView = new ResultView(this.scene)));
         this.add((this.foregroundView = new ForegroundView(this.scene)));
+
+        lego.event.emit(MainViewEvents.ViewsReady);
     }
 }

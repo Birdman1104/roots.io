@@ -1,1 +1,2 @@
-export const GameEvents = { SeedEaten: "GameEventSeedEaten" };
+export const GameEvents = { BotSeedEaten: "GameEventBotSeedEaten", PlayerSeedEaten: "GameEventPlayerSeedEaten" };
+export const MainViewEvents = { ViewsReady: "MainViewEventsViewsReady" };

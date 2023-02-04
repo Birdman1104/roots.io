@@ -2,7 +2,6 @@ import { GameModel } from "./GameModel";
 import { ObservableModel } from "./ObservableModel";
 
 class HeadModel extends ObservableModel {
-    protected emitEventsFor = ["gameModel"];
     private _gameModel: GameModel = null;
 
     public constructor() {
