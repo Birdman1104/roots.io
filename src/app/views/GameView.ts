@@ -1,35 +1,21 @@
-const SPEED = 100;
+import { BackgroundView } from "./BackgroundView";
+
+const SPEED = 1000;
 const ROTATION_SPEED = 1 * Math.PI; // 0.5 turn per sec, 2 sec per turn
 const ROTATION_SPEED_DEGREES = Phaser.Math.RadToDeg(ROTATION_SPEED);
 const TOLERANCE = 0.02 * ROTATION_SPEED;
 
 export class GameView extends Phaser.GameObjects.Container {
-    private bkg: Phaser.GameObjects.Sprite;
+    private bkg: BackgroundView;
     private hole: Phaser.Physics.Arcade.Sprite;
-    private frameUpdate: Phaser.Time.TimerEvent;
 
     public constructor(public scene) {
         super(scene);
         this.init();
     }
 
-    public update(...args: any[]): void {
-        console.log(1, args);
-    }
-
-    private init(): void {
-        this.initBkg();
-        this.initHole();
-
-        this.frameUpdate = this.scene.time.addEvent({
-            callback: this.timerEvent,
-            callbackScope: this,
-            delay: 1 / 60, // 1000 = 1 second
-            loop: true,
-        });
-    }
-
-    private timerEvent(): void {
+    public update(time, delta): void {
+        this.bkg?.update(time, delta);
         this.followPointer(this.scene.input.activePointer);
         Phaser.Physics.Arcade.ArcadePhysics.prototype.velocityFromRotation(
             this.hole.rotation,
@@ -38,11 +24,15 @@ export class GameView extends Phaser.GameObjects.Container {
         );
     }
 
+    private init(): void {
+        this.initBkg();
+        this.initHole();
+
+        this.scene.cameras.main.startFollow(this.hole);
+    }
+
     private initBkg(): void {
-        const { width, height } = this.scene.scale.gameSize;
-        this.bkg = this.scene.add.sprite(width / 2, height / 2, "bkg.jpg");
-        this.bkg.setInteractive();
-        // this.bkg.on(Phaser.Input.Events.POINTER_DOWN, this.onPointerDown, this);
+        this.bkg = new BackgroundView(this.scene);
         this.add(this.bkg);
     }
 
@@ -51,17 +41,12 @@ export class GameView extends Phaser.GameObjects.Container {
         this.add(this.hole);
     }
 
-    // private onPointerDown(){
-    //     this.pointerDown = true
-    // }
-
     private followPointer(pointer: Phaser.Input.Pointer): void {
         let angleToPointer = 0;
         let angleDelta = 0;
         if (pointer.isDown) {
             angleToPointer = Phaser.Math.Angle.Between(this.hole.x, this.hole.y, pointer.worldX, pointer.worldY);
             angleDelta = Phaser.Math.Angle.Wrap(angleToPointer - this.hole.rotation);
-            // return;
         }
 
         if (Phaser.Math.Fuzzy.Equal(angleDelta, 0, TOLERANCE)) {

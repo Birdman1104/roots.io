@@ -21,6 +21,8 @@ export default class PreloadScene extends Phaser.Scene {
         this.loadAudio();
         this.loadSpines();
         this.loadShaders();
+        this.load.tilemapTiledJSON("roots-map", "./assets/map/roots-map.json");
+        this.load.image("blue", "./assets/map/Blue.png");
     }
 
     private init(): void {

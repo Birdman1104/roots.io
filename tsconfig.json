@@ -21,5 +21,5 @@
         "lib": ["dom", "esnext"]
     },
     "include": ["**/*"],
-    "exclude": ["node_modules", "webpack", "dist", "nodeScripts", "./src/assets/shaders"]
+    "exclude": ["node_modules", "webpack", "dist", "nodeScripts", "./src/assets/shaders", "./src/assets/map"]
 }

@@ -9,6 +9,10 @@ export default class MainScene extends Phaser.Scene {
         super({ key: SceneNames.Main });
     }
 
+    public update(time, delta): void {
+        this.mainView.update(time, delta);
+    }
+
     private init(): void {
         this.initMainView();
 
