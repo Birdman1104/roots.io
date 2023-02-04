@@ -176,6 +176,69 @@
 						"w": 64,
 						"h": 64
 					}
+				},
+				{
+					"filename": "seed_blue.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 4,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 73,
+						"y": 109,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "seed_green.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 4,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 73,
+						"y": 123,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "seed_yellow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 4,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 87,
+						"y": 109,
+						"w": 8,
+						"h": 8
+					}
 				}
 			]
 		}
