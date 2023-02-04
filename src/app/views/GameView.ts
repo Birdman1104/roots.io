@@ -1,3 +1,5 @@
+import { lego } from "@armathai/lego";
+import { GameEvents } from "../../events/GameEvents";
 import { ROTATION_SPEED_DEGREES, SPEED, TOLERANCE } from "../utils/gameconfigs";
 import { BackgroundView } from "./BackgroundView";
 import { Seed } from "./Seed";
@@ -82,6 +84,7 @@ export class GameView extends Phaser.GameObjects.Container {
 
     private onSeedSwallowComplete(seed: Seed, _index: number): void {
         seed.destroy();
+        lego.event.emit(GameEvents.SeedEaten);
     }
 
     private addSeed(): void {
