@@ -1,6 +1,6 @@
 import { shuffleArray } from "./functions";
 
-export const SPEED = 500;
+export const SPEED = 250;
 export const ROTATION_SPEED = 1 * Math.PI; // 0.5 turn per sec, 2 sec per turn
 export const ROTATION_SPEED_DEGREES = Phaser.Math.RadToDeg(ROTATION_SPEED);
 export const TOLERANCE = 0.02 * ROTATION_SPEED;
@@ -70,7 +70,7 @@ export const generateBotsConfig = (n: number): BotDataConfig[] => {
             color: Math.random() * 0xffffff,
             score: 0,
             speed: SPEED * 5,
-            name: names[i],
+            username: names[i],
         });
     }
 

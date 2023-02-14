@@ -65,6 +65,29 @@ export class GameView extends Phaser.GameObjects.Container {
                 }
             });
         });
+
+        const players = [...this.bots, this.hole];
+        players.forEach((b, bi) => {
+            for (let i = bi + 1; i < players.length; i++) {
+                const c = players[i];
+                const { x: ax, y: ay, width: aw } = b;
+                const { x: bx, y: by, width: bw } = c;
+                const dist = Math.sqrt((ax - bx) * (ax - bx) + (ay - by) * (ay - by));
+                if (dist < aw / 2 || dist < bw / 2) {
+                    if (b instanceof Bot) {
+                        b.destroy();
+                        return;
+                    }
+                    if (c instanceof Bot) {
+                        c.destroy();
+                        return;
+                    }
+                    // const arg1 = b instanceof Bot ? b.id : "player";
+                    // const arg2 = c instanceof Bot ? c.id : "player";
+                    // lego.event.emit(GameEvents.Overlap, arg1, arg2);
+                }
+            }
+        });
     }
 
     private init(): void {
@@ -96,9 +119,10 @@ export class GameView extends Phaser.GameObjects.Container {
 
     private initBots(config: BotModel[]): void {
         for (let i = 0; i < config.length; i++) {
-            const { id, name, score, speed, color, size } = config[i];
-            const viewConfig = { id, name, score, speed, color, size };
+            const { id, username, score, speed, color, size } = config[i];
+            const viewConfig = { id, username, score, speed, color, size };
             const bot = new Bot(this.scene, viewConfig);
+            bot.setPosition(Math.random() * 2000, Math.random() * 1200);
             this.add(bot);
             this.bots.push(bot);
             this.moveBot(bot);
@@ -158,8 +182,8 @@ export class GameView extends Phaser.GameObjects.Container {
 
     private addSeed(): void {
         const seed = new Seed(this.scene, this.seeds.length + 1);
-        seed.x = Math.random() * 1000;
-        seed.y = Math.random() * 600;
+        seed.x = Math.random() * 2000;
+        seed.y = Math.random() * 1200;
         this.seeds.push(seed);
         this.add(seed);
     }

@@ -56,5 +56,10 @@ type BotDataConfig = {
     color: number;
     score: number;
     speed: number;
-    name: string;
+    username: string;
+};
+
+type Scorelist = {
+    username: string;
+    score: number;
 };

@@ -33,8 +33,8 @@ const config = {
     physics: {
         default: "arcade",
         arcade: {
-            debug: true,
-            debugShowBody: true,
+            debug: false,
+            debugShowBody: false,
         },
     },
     antialias: true,

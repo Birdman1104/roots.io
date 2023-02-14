@@ -6,6 +6,7 @@ import { RoundModel } from "./RoundModel";
 export class GameModel extends ObservableModel {
     private _roundModel: RoundModel;
     private _playerModel: PlayerModel;
+    private _scorelist: Scorelist[] = [];
     private _round = 1;
     private _score = 0;
 
@@ -38,15 +39,31 @@ export class GameModel extends ObservableModel {
         this._playerModel = value;
     }
 
+    public get scorelist(): Scorelist[] {
+        return this._scorelist;
+    }
+
+    public set scorelist(value: Scorelist[]) {
+        this._scorelist = value;
+    }
+
+    public updateScorelist(): void {
+        const botScores = this.roundModel.bots.map((b) => {
+            return { username: b.username, score: b.score };
+        });
+        const allScores = [...botScores, { username: "YOU", score: this.playerModel.score }];
+        const sorted = allScores.sort((a, b) => b.score - a.score);
+        this._scorelist = [...sorted];
+    }
+
     public init(): void {
         this._playerModel = new PlayerModel();
-        // this.score = 0;
-        // this.generateRound();
-        // const botConfig = generateBotsConfig(10);
+        this._playerModel.init();
     }
 
     public generateRound(): void {
-        const botConfig = generateBotsConfig(1);
+        const botConfig = generateBotsConfig(12);
         this._roundModel = new RoundModel(botConfig, this._round);
+        this.updateScorelist();
     }
 }

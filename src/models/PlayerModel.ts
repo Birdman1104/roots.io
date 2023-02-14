@@ -1,7 +1,7 @@
 import { ObservableModel } from "./ObservableModel";
 
 export class PlayerModel extends ObservableModel {
-    private _score = 0;
+    private _score: number;
 
     public constructor() {
         super("PlayerModel");
@@ -17,12 +17,10 @@ export class PlayerModel extends ObservableModel {
     }
 
     public init(): void {
-        // this.score = 0;
-        // this.generateRound();
-        // const botConfig = generateBotsConfig(10);
+        this.score = 0;
     }
 
-    public increaseScore(): void {
-        this.score++;
+    public increaseScore(value = 0): void {
+        this.score += Math.max(value, 1);
     }
 }

@@ -1,7 +1,10 @@
 import { GameEvents, MainViewEvents } from "../../events/GameEvents";
+import { BotModelEvents, PlayerModelEvents } from "../../events/ModelEvents";
 import { onBotSeedEatenCommand } from "./BotSeedEatenCommand";
 import { initRoundCommand } from "./InitRoundCommand";
+import { overlapCommand } from "./OverlapCommand";
 import { onPlayerSeedEatenCommand } from "./PlayerSeedEatenCommand";
+import { updateScorelistCommand } from "./UpdateScorelistCommand";
 
 export const eventCommandPairs: { event: any; command: any }[] = [
     {
@@ -15,5 +18,17 @@ export const eventCommandPairs: { event: any; command: any }[] = [
     {
         event: MainViewEvents.ViewsReady,
         command: initRoundCommand,
+    },
+    {
+        event: PlayerModelEvents.ScoreUpdate,
+        command: updateScorelistCommand,
+    },
+    {
+        event: BotModelEvents.ScoreUpdate,
+        command: updateScorelistCommand,
+    },
+    {
+        event: GameEvents.Overlap,
+        command: overlapCommand,
     },
 ];

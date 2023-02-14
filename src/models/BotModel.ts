@@ -6,7 +6,7 @@ export class BotModel extends ObservableModel {
     private _color: number;
     private _score = 0;
     private _speed: number;
-    private _name: string;
+    private _username: string;
 
     public constructor(private config: BotDataConfig) {
         super("BotModel");
@@ -53,16 +53,16 @@ export class BotModel extends ObservableModel {
     public set speed(value: number) {
         this._speed = value;
     }
-    public get name(): string {
-        return this._name;
+    public get username(): string {
+        return this._username;
     }
 
-    public set name(value: string) {
-        this._name = value;
+    public set username(value: string) {
+        this._username = value;
     }
 
-    public increaseScore(): void {
-        this.score++;
+    public increaseScore(value = 0): void {
+        this.score += Math.max(value, 1);
     }
 
     public init(): void {
@@ -70,6 +70,6 @@ export class BotModel extends ObservableModel {
         this._size = this.config.size;
         this._color = this.config.color;
         this.speed = this.config.speed;
-        this.name = this.config.name;
+        this.username = this.config.username;
     }
 }

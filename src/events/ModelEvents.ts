@@ -4,13 +4,14 @@ export const BotModelEvents = {
     SizeUpdate: "BotModelSizeUpdate",
     IdUpdate: "BotModelIdUpdate",
     SpeedUpdate: "BotModelSpeedUpdate",
-    NameUpdate: "BotModelNameUpdate",
+    UsernameUpdate: "BotModelUsernameUpdate",
 };
 
 export const GameModelEvents = {
     ScoreUpdate: "GameModelScoreUpdate",
     RoundModelUpdate: "GameModelRoundModelUpdate",
     PlayerModelUpdate: "GameModelPlayerModelUpdate",
+    ScorelistUpdate: "GameModelScorelistUpdate",
 };
 
 export const HeadModelEvents = { GameModelUpdate: "HeadModelGameModelUpdate" };
